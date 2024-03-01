@@ -12,3 +12,8 @@
 
 ## 其他
 代码高亮：https://prismjs.com/
+
+## 联系我
+[Github](https://github.com/hiderx)
+<img align="right" src="https://github-readme-stats.vercel.app/api?username=hiderx&show_icons=true&locale=en&theme=light" alt="hiderx" />
+<img align="left" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hiderx"/>
