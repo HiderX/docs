@@ -9,4 +9,14 @@
   * [STL](/docs/c++/STL.md)
 
 * Python
-  * [# MacOS配置Conda](/docs/python/MacOS配置Conda.md)
+  * [MacOS配置Conda](/docs/python/MacOS配置Conda.md)
+
+* ECNU
+  * 24S
+    * [并行程序设计](/docs/ecnu/24S/并行程序设计.md)
+
+* Automata
+  * [Automata](/docs/Automata/Automata.md)
+
+* Others
+  * [Mysql](/docs/others/Mysql.md)
