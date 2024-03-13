@@ -12,11 +12,13 @@
   * [MacOS配置Conda](/docs/python/MacOS配置Conda.md)
 
 * ECNU
-  * 24S
-    * [并行程序设计](/docs/ecnu/24S/并行程序设计.md)
+  * [uml形式化建模](/docs/ecnu/24S/uml.md)
+  * [并行程序设计](/docs/ecnu/24S/并行程序设计.md)
+  * [习概](/docs/ecnu/24S/习概.md)
 
 * Automata
   * [Automata](/docs/Automata/Automata.md)
 
 * Others
   * [Mysql](/docs/others/Mysql.md)
+  * [Leetcode](/docs/others/leetcode.md)

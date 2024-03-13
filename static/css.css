@@ -9,10 +9,24 @@ section.cover {
 body {
     font-family: "LXGW WenKai", sans-serif;
 }
-  
+@font-face {
+	font-family:nier;
+	src: url('/static/nier.ttf');
+}
+section.cover{
+    font-family: "nier", sans-serif;
+}
+.sidebar>h1 a{
+    font-family: "nier", sans-serif;
+}
+
 /* Mono font (optional) */
 pre,code {
     font-family: "LXGW WenKai Mono", sans-serif;
+}
+
+:root{
+    --theme-color: #3c9359;
 }
 
 /* mobile background */
