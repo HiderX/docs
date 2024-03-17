@@ -15,9 +15,7 @@
   - [uml形式化建模](/docs/ecnu/24S/uml.md)
   - [并行程序设计](/docs/ecnu/24S/并行程序设计.md)
   - [习概](/docs/ecnu/24S/习概.md)
-
-- Automata
-  - [Automata](/docs/Automata/Automata.md)
+  - [计算理论基础](/docs/ecnu/24S/Automata.md)
 
 - Others
   - [Mysql](/docs/others/Mysql.md)
