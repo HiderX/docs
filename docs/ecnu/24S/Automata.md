@@ -122,7 +122,7 @@ Concatenation (dot)
 
 Closure (star) 
 
-$L^∗ = \bigcup^{\infin}_{i=0}L^i$, where $L^0 = {ϵ}$, $L^1=L$, and $L^{k+1}=L.L^k(k = 1,2,...)$
+$L^∗ = \bigcup^{\infty}_{i=0}L^i$, where $L^0 = {ϵ}$, $L^1=L$, and $L^{k+1}=L.L^k(k = 1,2,...)$
 
 ### Grammars
 
@@ -144,3 +144,144 @@ This general model covers all the automata we will discuss in this course. A fin
 
 It is necessary to distinguish between **deterministic automata** and **nondeterministic automata**. A deterministic automaton is one in which each move in uniquely determined by current configuration. In a nondeterministic automaton, this is not so.
 
+## Deterministic Finite Automata
+
+### Definition
+
+A deterministic finite automaton (DFA) is a 5-tuple *A* = (*Q*, Σ, δ, *q*0, *F*), where
+
+*Q* is a finite set of states,
+
+Σ is a finite set of input symbols (i.e. an alphabet),
+
+δ is a transition function from *Q* × Σ to *Q*,
+
+*q*0 ∈ *Q* is a start state,
+
+*F* ⊆ *Q* is a set of final or accepting states
+
+**Example**
+
+Let *Q* = {$q_0, q_1, q_2$}, Σ = {0, 1}, *q*0 is the start state, and *F* = {$q_1$}. If transition function δ : *Q* × Σ → *Q* is defined by
+
+δ($q_0$, 0) = $q_2$, δ($q_1$, 0) = q_1, δ($q_2$, 0) = $q_2$,
+
+δ($q_0$, 1) = $q_0$, δ($q_1$, 1) = $q_1$, δ($q_2$, 1) = $q_1$,
+
+then $A1 = (\{q_0, q_1, q_2\}, {0, 1}, δ, q_0, \{q_1\})$​ is a DFA
+
+### Intuitional Descriptions for DFA
+
+**Transition diagram** a graph in which the nodes are the states, and arcs are labeled by input symbols, indicating the transitions of that automaton.
+
+The automaton $A1 = (\{q_0, q_1, q_2\}, {0, 1}, δ, q_0, \{q_1\})$​  as a transition diagram:
+
+![image-20240317183104453](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317183104453.png)
+
+**Transition table** a tabular listing of the transition function δ, which by implication tells us the set of states and the input alphabet.
+
+The automaton $A1 = (\{q_0, q_1, q_2\}, {0, 1}, δ, q_0, \{q_1\})$  is represented as the transition table:
+
+![image-20240317183212751](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317183212751.png)
+
+### Extended Transition Function
+
+The transition function δ can be extended to $\hat{δ}$​ that operates on states and strings (as opposed to states and symbols) by induction on the length of the input string:
+
+*Basis step*:  $\hat{δ}$(*q*, ϵ) = *q*
+
+*Inductive step*: Suppose *w* = *xa*, then $\hat{δ}$(*q*, *w*) = δ($\hat{δ}$​(*q*, *x*), *a*)
+
+### Language of DFA
+
+The language of a DFA *A* = (*Q*, Σ, δ, *q*0, *F*) is defined by
+
+*L*(*A*) = {*w* | $\hat{δ}(q_0, w)$ ∈ *F*}
+
+Note that we require that δ, and consequently $\hat{δ}$, be *total functions* (at each step, there is a unique move is defined, so that we have justified in calling such an automaton deterministic).
+
+A DFA will process *every* string in $Σ^∗$​ , which will be either accepted or not.
+
+If *L* is a language for some DFA A, we say *L* is a regular language.
+
+To show any language is regular, all we have to do is finding a DFA for it
+
+### Languages defined by other condition
+
+One may ask what if the acceptance condition
+
+{*w* | $\hat{δ}(q_0, w)$ ∈ *F*} is changed to {*w* | *w* = *uv* ∧ $\hat{δ}(q_0, w)$ ∈ *F*},
+
+which means we accept this string *w* whenever some intermediate state is in *F*.
+
+We can rephrase it as making all states in *F* absorbing, since the successive states are irrevalent to accept or reject in the setting
+
+DFAs with final states being absorbing are still DFAs, which has the restriction
+
+(*q*, *a*) = *q* for each *q* ∈ *F* and *a* ∈ Σ,
+
+so the new languages in the consideration are still in the scope of regular
+
+languages.
+
+A more interesting question is whether every regular language over alphabet Σ can be accepted by such a special DFA.
+
+**Unfortuniately, the answer is negative**
+
+### Designing DFA
+
+**Example**
+
+Suppose Σ = {*a*, *b*}, design a DFA to accept all strings that start and end with *a*, or start and end with *b*.
+
+![image-20240317191836601](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317191836601.png)
+
+## Nondeterministic Finite Automata
+
+### An Informal View of NFA
+
+The difference between the DFA and the NFA is in the type of transition function. For the NFA, transition function takes a state and an input symbol as arguments, but returns a set of zero, one, or more states.
+
+That means, an NFA can be in several states at once, or, viewed another way, it can “guess” which state to go to next.
+
+![image-20240317190740442](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317190740442.png)
+
+### Definition of NFA
+
+A nondeterministic finite automata (NFA) is a 5-tuple *A* = (*Q*, Σ, δ, *q*0, *F*), where
+
+*Q* is a finite set of states,
+
+Σ is a finite set of input symbols (i.e. an alphabet),
+
+δ is a transition function from *Q* × Σ to the powerset $2^Q$ of *Q*,
+
+$q_0$ ∈ *Q* is a start state,
+
+*F* ⊆ *Q* is a set of final or accepting states
+
+### Extended Transition Function
+
+The transition function δ of an NFA can be extended to $\hat{δ}$ :
+
+Basis step: $\hat{δ}$(*q*, ϵ) = {*q*}
+
+Inductive step: Suppose *w* = *xa*, then
+
+$\hatδ(q,w) = \bigcup_{p∈\hatδ(q,x)}δ(p,a)$
+
+### Language of NFA
+
+The language of an NFA *A* = (*Q*, Σ, δ, *q*0, *F*) is defined by
+
+*L*(*A*) = {*w* | $\hat{δ}(q_0, w) ∩ F \ne ∅$}
+
+### Designing NFA
+
+**Example**
+
+Find an NFA with a single final state that accepts the set {*a*} ∪ {$b^n$ | *n* ≥ 1}
+
+**Solution** 
+
+![image-20240317191724476](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317191724476.png)
