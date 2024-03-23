@@ -8,6 +8,9 @@
 
 文件嵌入：https://docsify.js.org/#/embed-files
 
+## 碎碎念
+卷不动了，想学一手机器学习，不知道能学到什么地步呢，我的概率论可是稀烂😆
+
 ## 联系我
 <div>
 <a href="https://github.com/hiderx" target="_blank"><img src="https://avatars.githubusercontent.com/u/60884197" alt="Github" style="width:10em;height:10em;border-radius:5px"></a>

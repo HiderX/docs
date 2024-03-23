@@ -4,11 +4,11 @@
 
 ### Induction on Integers
 
-In order to prove a statement *S*(*n*) on an integer *n*, one common approach is proving two facts:
+In order to prove a statement $S(n)$ on an integer $n$, one common approach is proving two facts:
 
-1 *The basis step*—we show *S*(*i*) is true for a particular integer *i*. (Usually, *i* = 0 or *i* = 1.).
+1 *The basis step*—we show $S(i)$ is true for a particular integer $i$. (Usually, $i = 0$ or $i = 1$.).
 
-2 *The inductive step*—we assume *n* ≥ *i*, where *i* is the basis integer, and show that “if *S*(*n*) then *S*(*n* + 1)”. Intuitively, the two facts could convince us that *S*(*n*) is true for all *n* ≥ *i*.
+2 *The inductive step*—we assume $n \ge i$, where *i* is the basis integer, and show that “if $S(n) then S(n + 1)$”. Intuitively, the two facts could convince us that $S(n)$ is true for all $n \ge i$.
 
 Why Induction Is Valid?
 
@@ -18,29 +18,35 @@ The reason comes from **the well-ordering property**:
 
 **Proof** 
 
-Suppose *S*(*n*) was false for one or more of those integers. Then, by the well-ordering property, there would have to be a smallest value of *n*, say *j*, for which *S*(*j*) is false, and yet *j* ≥ *i*.
+Suppose $S(n)$ was false for one or more of those integers. Then, by the well-ordering property, there would have to be a smallest value of $n$, say $j$, for which $S(j)$ is false, and yet $j \geq i$.
 
-Now *j* could not be *i*, because we prove in the basis part that *S*(*i*) is true.
+Now $j$ could not be $i$, because we prove in the basis part that $S(i)$ is true.
 
-Thus, *j* must be greater than *i*. We now know that *j* − 1 ≥ *i*, and *S*(*j* − 1) is true.
+Thus, $j$ must be greater than $i$. We now know that $j - 1 \geq i$, and $S(j - 1)$ is true.
 
-However, we proved in the inductive part that if *n* ≥ *i*, then *S*(*n*) implies *S*(*n* + 1). Suppose *n* = *j* − 1. Then we know from the inductive step that *S*(*j* − 1) implies *S*(*j*). Since *S*(*j* − 1) is true, we can infer *S*(*j*).
+However, we proved in the inductive part that if $n \geq i$, then $S(n)$ implies $S(n + 1)$. Suppose $n = j - 1$. Then we know from the inductive step that $S(j - 1)$ implies $S(j)$. Since $S(j - 1)$ is true, we can infer $S(j)$.
 
-We have assumed the negation of which we wanted to prove; that is, assumed *S*(*j*) was false for some *j* ≥ *i*. In the case, we derived a contradiction. So *S*(*n*) is true for all *n* ≥ *i*. 
+We have assumed the negation of which we wanted to prove; that is, assumed $S(j)$ was false for some $j \geq i$. In this case, we derived a contradiction. So $S(n)$ is true for all $n \geq i$.
 
 Thus, we proved our logical reasoning system:
 
 **The Induction Principle**
 
-If we prove i) *S*(*i*) and ii) ∀*n* ≥ *i*, *S*(*n*) implies *S*(*n* + 1), then we conclude *S*(*n*) for all *n* ≥ *i*.
+If we prove  
+
+i) $S(i)$ and
+
+ii) $\forall n \geq i, S(n) \implies S(n + 1)$, 
+
+then we conclude $S(n)$ for all $n \geq i$​.
 
 Sometimes an inductive proof is made possible only by using a more general scheme than the one proposed. Two important generalizations of this scheme are:
 
-1 Use several basis cases. i.e., we prove *S*(*i*), *S*(*i* + 1), . . ., *S*(*j*) for some *j* ≥ *i*.
+1. Use several basis cases. i.e., we prove $S(i)$, $S(i + 1)$, ..., $S(j)$ for some $j \geq i$.
 
-2 In proving *S*(*n* + 1), (*n* ≥ *j*), use the truth of all the statements *S*(*i*), *S*(*i* + 1), . . ., *S*(*n*) rather than just using *S*(*n*).
+2. In proving $S(n + 1)$, ($n \geq j$), use the truth of all the statements $S(i)$, $S(i + 1)$, ..., $S(n)$ rather than just using $S(n)$.
 
-The conclusion to be made from this basis and inductive step is that *S*(*n*) is true for all *n* ≥ *i*.
+The conclusion to be made from this basis and inductive step is that $S(n)$ is true for all $n \geq i$.
 
 ### Structural Inductions
 
@@ -48,25 +54,23 @@ In computer science theory, there are several recursively defined structures abo
 
 Like inductions, all recursive definitions have a basis case, where one or more elementary structures are defined, and an inductive step, where more complex structures are defined in terms of previously defined structures.
 
-When we have a recursive definition, we can prove theorems about it using the following proof form, which is called structural induction. Let *S*(*X*) be a statement about the structures *X* that are defined by some particular recursive definition.
+When we have a recursive definition, we can prove theorems about it using the following proof form, which is called structural induction. Let $S(X)$ be a statement about the structures $X$ that are defined by some particular recursive definition.
 
-1 As a basis step, prove *S*(*X*) for the basis structure(s) *X*.
+1. As a basis step, prove $S(X)$ for the basis structure(s) $X$.
 
-2 For the inductive step, take a structure *X* that the recursive definition says is formed from $Y_1,Y_2,. . .,Y_k$. Assume that the statements $S(Y_1),S(Y_2), . . . , S(Y_k)$ are true, and use these to prove that *S*(*X*) is true.
+2. For the inductive step, take a structure $X$ that the recursive definition says is formed from $Y_1, Y_2, . . . , Y_k$. Assume that the statements $S(Y_1), S(Y_2), . . . , S(Y_k)$ are true, and use these to prove that $S(X)$ is true.
 
-The conclusion is that *S*(*X*) is true for all *X*.
+The conclusion is that $S(X)$ is true for all $X$.
 
 ### Mutual Inductions
 
-Sometimes, we need to prove a group of statements$S_1(n),S_2(n), . . . ,S_k(n)$ together by induction on *n*. Automata theory provides many such situations.
+Sometimes, we need to prove a group of statements $S_1(n), S_2(n), . . . , S_k(n)$ together by induction on $n$. Automata theory provides many such situations.
 
-In fact, proving a group of statements is not different from proving the conjunction $S_1(n) ∧ S_2(n) ∧ · · · ∧ S_k (n)$​ of all the statements. However, when there are really several independent statements to prove, it is generally less confusing to keep the statements separately and to prove them all in their own parts of the basis and inductive steps. We call this sort of proof mutual induction.
+In fact, proving a group of statements is not different from proving the conjunction $S_1(n) \land S_2(n) \land \cdots \land S_k(n)$ of all the statements. However, when there are really several independent statements to prove, it is generally less confusing to keep the statements separately and to prove them all in their own parts of the basis and inductive steps. We call this sort of proof mutual induction.
 
 ## Central Concepts of Automata Theory
 
 ### Languages
-
-We start with a finite, nonempty set Σ of symbols, called the alphabet.
 
 Example:
 
@@ -82,57 +86,59 @@ The empty string is denoted ϵ.
 
 The concatenation of strings *x* and *y*, denoted *xy*, is the string obtained by appending the symbols of *y* to the right end of *x*, that is, if $x = a_1a_2· · ·a_i$ , $y = b_1b_2· · ·b_j$  , then $xy = a_1a_2· · ·a_ib_1b_2· · ·b_j$.
 
-Example:
+**Example:**
 
-Let *x* = 01101, and *y* = 110. Then *xy* = 01101110.
+Let $x = 01101$, and $y = 110$. Then $xy = 01101110$.
 
-Notice that: For any string *w*, ϵ*w* = *w*ϵ = *w*
+Notice that: For any string $w$, $\epsilon w = w\epsilon = w$.
 
-The length of a strings is the number of positions for symbols in the string.
+The length of a string is the number of positions for symbols in the string.
 
-The length of a string *w* is denoted |*w*|. For example, |00110| = 5, |ϵ| = 0.
+The length of a string $w$ is denoted $|w|$. For example, $|00110| = 5$, $|\epsilon| = 0$.
 
 The power of an alphabet is a set of strings of a certain length from an alphabet.
 
-The set of strings of length *k*, each of whose symbols is in Σ, is denoted Σ *k* .
+The set of strings of length $k$, each of whose symbols is in $\Sigma$, is denoted $\Sigma^k$.
 
-For example, if Σ = {0, 1}, then $Σ^0 = {ϵ}, Σ^1 = {0, 1},Σ^2 = {00, 01, 10, 11}$.
+For example, if $\Sigma = \{0, 1\}$, then $\Sigma^0 = \{\epsilon\}, \Sigma^1 = \{0, 1\}, \Sigma^2 = \{00, 01, 10, 11\}$.
 
-The set of all strings over an alphabet Σ is denoted $Σ^∗$. For instance, $\{0, 1\}^∗ = {ϵ, 0, 1, 00, 10, 01, 11, 000, . . .}$
+The set of all strings over an alphabet $\Sigma$ is denoted $\Sigma^*$. For instance, $\{0, 1\}^* = \{\epsilon, 0, 1, 00, 10, 01, 11, 000, . . .\}$
 
-The set of nonempty strings from alphabet Σ is denoted $Σ^+$.
+The set of nonempty strings from alphabet $\Sigma$ is denoted $\Sigma^+$.
 
-$  Σ^+ = Σ^1 ∪ Σ^2 ∪ Σ^3 ∪ · · ·$
+$\Sigma^+ = \Sigma^1 \cup \Sigma^2 \cup \Sigma^3 \cup \cdots$
 
-$Σ^∗ = Σ^+ ∪ {ϵ} = Σ^0 ∪ Σ^1 ∪ Σ^2 ∪ Σ^3 ∪ · · ·$
+$\Sigma^* = \Sigma^+ \cup \{\epsilon\} = \Sigma^0 \cup \Sigma^1 \cup \Sigma^2 \cup \Sigma^3 \cup \cdots$
 
-For any alphabet Σ, $Σ^∗$ is a language.
+For any alphabet $\Sigma$, $\Sigma^*$ is a language.
 
-∅, the empty language, is a language over any alphabet.
+$\emptyset$, the empty language, is a language over any alphabet.
 
-{ϵ}, the language consisting of only the empty string, is also a language over any alphabet.
+$\{\epsilon\}$, the language consisting of only the empty string, is also a language over any alphabet.
 
-Notice that: $∅ \ne {ϵ}$.
+Notice that: $\emptyset \ne \{\epsilon\}$.
 
-Since languages are sets, the union, intersection, and difference of two languages are immediately defined. Let *L* and *M* be both languages, there are other two operations on languages.
+Since languages are sets, the union, intersection, and difference of two languages are immediately defined. Let $L$ and $M$ be both languages, there are other two operations on languages.
 
-Concatenation (dot) 
+**Concatenation (dot)**
 
-*L*.*M* = {*w* | *w* = *xy*, *x* ∈ *L*, *y* ∈ *M*}
+$L.M = \{w | w = xy, x \in L, y \in M\}$
 
-Closure (star) 
+**Closure (star)**
 
-$L^∗ = \bigcup^{\infty}_{i=0}L^i$, where $L^0 = {ϵ}$, $L^1=L$, and $L^{k+1}=L.L^k(k = 1,2,...)$
+$L^* = \bigcup^{\infty}_{i=0} L^i$, where $L^0 = \{\epsilon\}$, $L^1 = L$, and $L^{k+1} = L.L^k \quad (k = 1,2,...)$
 
 ### Grammars
 
-A grammar is a 4-tuple *G* = (*V*, *T*, *P*, *S*), where
+A grammar is a 4-tuple $G = (V, T, P, S)$, where
 
-*V* is a finite set of variables,
+- $V$ is a finite set of variables,
 
-*T* is a finite set of terminal symbols,
+- $T$ is a finite set of terminal symbols,
 
-*P* is a finite set of productions of the form *x* → *y*, where $x ∈ (V ∪ T)^+$and $y ∈ (V ∪ T)^∗$ , *S* ∈ *V* is a designated variable called the start symbol.
+- $P$ is a finite set of productions of the form $x \rightarrow y$, where $x \in (V \cup T)^+$ and $y \in (V \cup T)^*$, 
+
+- $S \in V$ is a designated variable called the start symbol.
 
 ### Automata
 
@@ -148,39 +154,39 @@ It is necessary to distinguish between **deterministic automata** and **nondeter
 
 ### Definition
 
-A deterministic finite automaton (DFA) is a 5-tuple *A* = (*Q*, Σ, δ, *q*0, *F*), where
+A deterministic finite automaton (DFA) is a 5-tuple $A = (Q, \Sigma, \delta, q_0, F)$, where
 
-*Q* is a finite set of states,
+- $Q$ is a finite set of states,
 
-Σ is a finite set of input symbols (i.e. an alphabet),
+- $\Sigma$ is a finite set of input symbols (i.e., an alphabet),
 
-δ is a transition function from *Q* × Σ to *Q*,
+- $\delta$ is a transition function from $Q \times \Sigma$ to $Q$,
 
-*q*0 ∈ *Q* is a start state,
+- $q_0 \in Q$ is a start state,
 
-*F* ⊆ *Q* is a set of final or accepting states
+- $F \subseteq Q$ is a set of final or accepting states.
 
 **Example**
 
-Let *Q* = {$q_0, q_1, q_2$}, Σ = {0, 1}, *q*0 is the start state, and *F* = {$q_1$}. If transition function δ : *Q* × Σ → *Q* is defined by
+Let $Q = \{q_0, q_1, q_2\}$, $\Sigma = \{0, 1\}$, $q_0$ is the start state, and $F = \{q_1\}$. If the transition function $\delta : Q \times \Sigma \rightarrow Q$ is defined by
 
-δ($q_0$, 0) = $q_2$, δ($q_1$, 0) = q_1, δ($q_2$, 0) = $q_2$,
+- $\delta(q_0, 0) = q_2$, $\delta(q_1, 0) = q_1$, $\delta(q_2, 0) = q_2$,
 
-δ($q_0$, 1) = $q_0$, δ($q_1$, 1) = $q_1$, δ($q_2$, 1) = $q_1$,
+- $\delta(q_0, 1) = q_0$, $\delta(q_1, 1) = q_1$, $\delta(q_2, 1) = q_1$,
 
-then $A1 = (\{q_0, q_1, q_2\}, {0, 1}, δ, q_0, \{q_1\})$​ is a DFA.
+then $A1 = (\{q_0, q_1, q_2\}, \{0, 1\}, \delta, q_0, \{q_1\})$ is a DFA.
 
 ### Intuitional Descriptions for DFA
 
 **Transition diagram** a graph in which the nodes are the states, and arcs are labeled by input symbols, indicating the transitions of that automaton.
 
-The automaton $A1 = (\{q_0, q_1, q_2\}, {0, 1}, δ, q_0, \{q_1\})$​  as a transition diagram:
+The automaton $A1 = (\{q_0, q_1, q_2\}, {0, 1}, \delta, q_0, \{q_1\})$​  as a transition diagram:
 
 ![image-20240317183104453](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317183104453.png)
 
 **Transition table** a tabular listing of the transition function δ, which by implication tells us the set of states and the input alphabet.
 
-The automaton $A1 = (\{q_0, q_1, q_2\}, {0, 1}, δ, q_0, \{q_1\})$  is represented as the transition table:
+The automaton $A1 = (\{q_0, q_1, q_2\}, {0, 1}, \delta, q_0, \{q_1\})$  is represented as the transition table:
 
 ![image-20240317183212751](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317183212751.png)
 
@@ -188,21 +194,21 @@ The automaton $A1 = (\{q_0, q_1, q_2\}, {0, 1}, δ, q_0, \{q_1\})$  is represent
 
 The transition function δ can be extended to $\hat{δ}$​ that operates on states and strings (as opposed to states and symbols) by induction on the length of the input string:
 
-*Basis step*:  $\hat{δ}$(*q*, ϵ) = *q*
+**Basis step:**  $\hat{\delta}(q, \epsilon) = q$
 
-*Inductive step*: Suppose *w* = *xa*, then $\hat{δ}$(*q*, *w*) = δ($\hat{δ}$​(*q*, *x*), *a*)
+**Inductive step:** Suppose $w = xa$, then $\hat{\delta}(q, w) = \delta(\hat{\delta}(q, x), a)$
 
 ### Language of DFA
 
-The language of a DFA *A* = (*Q*, Σ, δ, *q*0, *F*) is defined by
+The language of a DFA $A = (Q, \Sigma, \delta, q_0, F)$ is defined by
 
-*L*(*A*) = {*w* | $\hat{δ}(q_0, w)$ ∈ *F*}
+$L(A) = \{w | \hat{\delta}(q_0, w) \in F\}$
 
-Note that we require that δ, and consequently $\hat{δ}$, be *total functions* (at each step, there is a unique move is defined, so that we have justified in calling such an automaton deterministic).
+Note that we require that $\delta$, and consequently $\hat{\delta}$, be *total functions* (at each step, there is a unique move defined, so that we have justified in calling such an automaton deterministic).
 
-A DFA will process *every* string in $Σ^∗$​ , which will be either accepted or not.
+A DFA will process *every* string in $\Sigma^*$, which will be either accepted or not.
 
-If *L* is a language for some DFA A, we say *L* is a regular language.
+If $L$ is a language for some DFA $A$, we say $L$ is a regular language.
 
 To show any language is regular, all we have to do is finding a DFA for it.
 
@@ -210,19 +216,19 @@ To show any language is regular, all we have to do is finding a DFA for it.
 
 One may ask what if the acceptance condition
 
-{*w* | $\hat{δ}(q_0, w)$ ∈ *F*} is changed to {*w* | *w* = *uv* ∧ $\hat{δ}(q_0, w)$ ∈ *F*},
+$\{w | \hat{\delta}(q_0, w) \in F\}$ is changed to $\{w | w = uv \land \hat{\delta}(q_0, w) \in F\}$,
 
-which means we accept this string *w* whenever some intermediate state is in *F*.
+which means we accept the string $w$ whenever some intermediate state is in $F$.
 
-We can rephrase it as making all states in *F* absorbing, since the successive states are irrevalent to accept or reject in the setting.
+We can rephrase it as making all states in $F$ absorbing, since the successive states are irrelevant to accept or reject in the setting.
 
 DFAs with final states being absorbing are still DFAs, which has the restriction
 
-(*q*, *a*) = *q* for each *q* ∈ *F* and *a* ∈ Σ,
+$(q, a) = q$ for each $q \in F$ and $a \in \Sigma$,
 
 so the new languages in the consideration are still in the scope of regular languages.
 
-A more interesting question is whether every regular language over alphabet Σ can be accepted by such a special DFA.
+A more interesting question is whether every regular language over alphabet $\Sigma$ can be accepted by such a special DFA.
 
 **Unfortuniately, the answer is negative**
 
@@ -230,7 +236,7 @@ A more interesting question is whether every regular language over alphabet Σ c
 
 **Example**
 
-Suppose Σ = {*a*, *b*}, design a DFA to accept all strings that start and end with *a*, or start and end with *b*.
+Suppose $\Sigma = \{a, b\}$, design a DFA to accept all strings that start and end with \(a\), or start and end with \(b\).
 
 ![image-20240317191836601](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240317191836601.png)
 
@@ -246,39 +252,39 @@ That means, an NFA can be in several states at once, or, viewed another way, it 
 
 ### Definition of NFA
 
-A nondeterministic finite automata (NFA) is a 5-tuple *A* = (*Q*, Σ, δ, *q*0, *F*), where
+A nondeterministic finite automaton (NFA) is a 5-tuple $A = (Q, \Sigma, \delta, q_0, F)$, where
 
-*Q* is a finite set of states,
+- $Q$ is a finite set of states,
 
-Σ is a finite set of input symbols (i.e. an alphabet),
+- $\Sigma$ is a finite set of input symbols (i.e., an alphabet),
 
-δ is a transition function from *Q* × Σ to the powerset $2^Q$ of *Q*,
+- $\delta$ is a transition function from $Q \times \Sigma$ to the power set $2^Q$ of $Q$,
 
-$q_0$ ∈ *Q* is a start state,
+- $q_0 \in Q$ is a start state,
 
-*F* ⊆ *Q* is a set of final or accepting states.
+- $F \subseteq Q$ is a set of final or accepting states.
 
 ### Extended Transition Function
 
-The transition function δ of an NFA can be extended to $\hat{δ}$ :
+The transition function $\delta$ of an NFA can be extended to $\hat{\delta}$:
 
-Basis step: $\hat{δ}$(*q*, ϵ) = {*q*}
+**Basis step:** $\hat{\delta}(q, \epsilon) = {q}$
 
-Inductive step: Suppose *w* = *xa*, then
+**Inductive step:** Suppose $w = xa$, then
 
-$\hatδ(q,w) = \bigcup_{p∈\hatδ(q,x)}δ(p,a)$
+$\hat{\delta}(q,w) = \bigcup_{p \in \hat{\delta}(q,x)} \delta(p,a)$
 
 ### Language of NFA
 
-The language of an NFA *A* = (*Q*, Σ, δ, *q*0, *F*) is defined by
+The language of an NFA $A = (Q, \Sigma, \delta, q_0, F)$ is defined by
 
-*L*(*A*) = {*w* | $\hat{δ}(q_0, w) ∩ F \ne ∅$}
+$L(A) = \{w | \hat{\delta}(q_0, w) \cap F \ne \emptyset\}$
 
 ### Designing NFA
 
 **Example**
 
-Find an NFA with a single final state that accepts the set {*a*} ∪ {$b^n$ | *n* ≥ 1}
+Find an NFA with a single final state that accepts the set $\{a\} \cup \{b^n | n \geq 1\}$
 
 **Solution** 
 
@@ -359,4 +365,127 @@ Two cases will be considered:
 
 The claim follows by contradiction.
 
-## An Application of Finite Automata: Text Search
+## Finite Automata with ϵ-Transition
+
+### Use of ϵ-Transition
+
+In order to add “programming convenience”, we will extend NFA to ϵ-NFA.
+
+In transition diagrams of such NFA, the empty string ϵ is allowed as a label.
+
+However, this new capability does not expand the class of language that can be accepted by finite automata.
+
+**Example**
+
+Design an automaton *A*3 accepting decimal numbers consisting of (1) an optional + or − sign, (2) a string of digits, (3) a decimal point, and (4) another strings of digits. One of the strings (2) and (4) is optional, but not both empty.
+
+![image-20240323152040307](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240323152040307.png)
+
+### Definition of ϵ-NFA
+
+A nondeterministic finite automaton with $\epsilon$-transition is a 5-tuple $(Q, \Sigma, \delta, q_0, F)$, where:
+- $Q$ is a finite set of states,
+- $\Sigma$ is a finite set of input symbols (an alphabet),
+- $\delta$ is a transition function from $Q \times (\Sigma \cup \{\epsilon\})$ to the powerset of $Q$,
+- $q_0 \in Q$ is a start state,
+- $F \subseteq Q$ is a set of final or accepting states.
+
+### ϵ-Closures
+
+Informally, the $\epsilon$-closures of a state $q$ is the set consisting of $q$ itself and all other states that can be reached by following transitions out of $q$ that are labeled with $\epsilon$. The recursive definition of the $\epsilon$-closures, denoted as $ECLOSE(q)$, is given below.
+
+**Basis step:** $q \in ECLOSE(q)$.
+
+**Inductive step:** If $p \in ECLOSE(q)$, then $\delta(p, \epsilon) \subseteq ECLOSE(q)$.
+
+### Extended Transition Function
+
+The transition function $\delta$ of an $\epsilon$-NFA can be extended to $\hat{\delta}$:
+
+**Basis step:** $\hat{\delta}(q, \epsilon) = ECLOSE(q)$.
+
+**Inductive step:** Suppose $w = xa$, then
+
+$\hat{\delta}(q, w) = \bigcup_{r \in \delta(\hat{\delta}(q,x),a)} ECLOSE(r)$
+
+where $\delta(S, a) = \bigcup_{p \in S} \delta(p, a)$​.
+
+### Language of ϵ-NFA
+
+The language of an $\epsilon$-NFA $A = (Q, \Sigma, \delta, q_0, F)$ is defined by
+
+$L(A) = \{w | \hat{\delta}(q_0, w) \cap F \neq \emptyset\}$​
+
+### Equivalence of DFA and ϵ-NFA
+
+Given any $\epsilon$-NFA $E$, we can find a DFA $D$ that accepts the same language as $E$. The construction is very close to the subset construction, as the states of $D$ are subsets of the states of $E$.
+
+Let $\epsilon$-NFA $E = (Q_E, \Sigma, \delta_E, q_0, F_E)$, we will construct an equivalent DFA $D = (Q_D, \Sigma, \delta_D, q_D, F_D)$.
+
+Here is the detail of the construction:
+
+- $Q_D = \{S | S \subseteq Q_E, S = ECLOSE(S)\}$
+- $q_D = ECLOSE(q_0)$
+- $F_D = \{S | S \in Q_D, S \cap F_E \neq \emptyset\}$
+- For every $S \in Q_D$ and $a \in \Sigma$, $\delta_D(S, a) = \bigcup_{r \in \delta_E(S,a)} ECLOSE(r)$
+
+where $\delta_E(S, a) = \bigcup_{p \in S} \delta_E(p, a)$.
+
+**Theorem 2.3** 
+
+A language $L$ is accepted by some $\epsilon$-NFA if and only if $L$​ is accepted by some DFA.
+
+**Proof (if):** This direction is straightforward. Suppose $L = L(D)$ for some DFA $D$. Convert $D$ into an $\epsilon$-NFA $E$ by adding the transition $\delta_E(q, \epsilon) = \emptyset$ for all states $q$ in $D$.
+
+**Proof (only-if):** Let $E = (Q_E, \Sigma, \delta_E, q_0, F_E)$ be an $\epsilon$-NFA. Apply the modified subset construction to produce the DFA $D = (Q_D, \Sigma, \delta_D, q_D, F_D)$. We show $\hat{\delta}_E(q_0, w) = \hat{\delta}_D(q_D, w)$ by induction on $|w|$.
+
+**Basis step:** $\hat{\delta}_E(q_0, \epsilon) = ECLOSE(q_0) = q_D = \hat{\delta}_D(q_D, \epsilon)$.
+
+**Inductive step:**
+$$\hat{\delta}_E(q_0, xa) = \bigcup_{p \in \delta_E(\hat{\delta}_E(q_0,x),a)} ECLOSE(p) \quad (\text{definition of } \hat{\delta}_E)$$
+$$= \bigcup_{p \in \delta_E(\hat{\delta}_D (q_D ,x),a)} ECLOSE(p) \quad (\text{induction hypothesis})$$
+$$= \delta_D(\hat{\delta}_D(q_D, x), a) \quad (\text{modified subset construction})$$
+$$= \hat{\delta}_D(q_D, xa) \quad (\text{definition of } \hat{\delta}_D)$$
+
+## Regular Expressions
+
+### Building Regular Expressions
+
+**Inductive definition of regular expression (RE) and its language:**
+
+**Basis step:**
+- $\epsilon$ and $\emptyset$ are regular expressions.
+
+  $L(\epsilon) = \{\epsilon\}$, $L(\emptyset) = \emptyset$.
+
+- If $a \in \Sigma$, then $a$ is a regular expression.
+
+  $L(a) = \{a\}$.
+
+**Inductive step:**
+
+- If $E$ is a regular expression, then $(E)$ is a regular expression. $L((E)) = L(E)$.
+
+- If $E$ and $F$ are regular expressions, then $E + F$ is a regular expression. $L(E + F) = L(E) \cup L(F)$.
+
+- If $E$ and $F$ are regular expressions, then $E.F$ is a regular expression. $L(E.F) = L(E) \cdot L(F)$.
+
+- If $E$ is a regular expression, then $E^*$ is a regular expression. $L(E^*) = (L(E))^*$.
+
+### Precedence of Regular Expression Operators
+
+1. The star operator is of highest precedence.
+2. Next in precedence comes the concatenation or dot operator.
+3. Finally, all unions or plus operators are grouped with their operands.
+
+### Languages Associated with Regular Expressions
+
+**Example**
+
+Write a regular expression for the set of strings that consist of alternating 0’s and 1’s.
+
+$(\epsilon + 1)(01)^*(\epsilon + 0)$.
+
+Find a regular expression for the language $L = \{w \in {0, 1}^* | w \text{ has no pair of consecutive zeros}\}$.
+
+$(1 + 01)^*(0 + \epsilon)$
