@@ -11,12 +11,8 @@
 - Python
   - [MacOS配置Conda](/docs/python/MacOS配置Conda.md)
 
-- ECNU
-  - [uml形式化建模](/docs/ecnu/24S/uml.md)
-  - [习概](/docs/ecnu/24S/习概.md)
-  - [计算理论基础](/docs/ecnu/24S/Automata.md)
-
 - Others
+  - [Automata](/docs/others/Automata.md)
   - [Mysql](/docs/others/Mysql.md)
   - [Git](/docs/others/Git.md)
   - [Leetcode](/docs/others/leetcode.md)
