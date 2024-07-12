@@ -22,11 +22,11 @@ section.cover{
 
 /* Mono font (optional) */
 pre,code {
-    font-family: "LXGW WenKai Mono", sans-serif;
+    border-radius: 5px;
 }
 
 /* mobile background */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     section.cover {
         background-image: url("https://upyun.shouhuxingguang.cn/mobile.jpg")!important;
         background-position: center!important;
@@ -37,12 +37,14 @@ pre,code {
     h1{
         display: none;
     }
-    blockquote{
+    .cover-main blockquote{
         position: relative;
         top: 3rem;
         color: white;
-        font-size: 2.2rem!important;
         text-shadow: 1px 1px 5px rgba(255, 231, 74, 0.848)!important;
+    }
+    .toc-nav{
+        display: none;
     }
 }
 

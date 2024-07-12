@@ -1,557 +1,4 @@
-# HTML5+CSS3+移动web
-
-## HTML
-
-HTML 超文本标记语言——HyperText Markup Language。 
-
-* 超文本：链接
-
-### HTML骨架
-
-* html：整个网页
-* head：网页头部，用来存放给浏览器看的信息，例如 CSS，title，meta
-* body：网页主体，用来存放给用户看的信息，例如图片、文字
-
-```html
-<html>
-  <head>
-    <title>网页标题</title>
-  </head>
-  <body>
-    网页主体
-    <!--我是注释-->
-  </body>
-</html>
-```
-
-在vscode中，可以输入`!`或者`html5`快速生成
-
-### 标签
-
-标记：标签，带尖括号的文本
-
-注意，文本本身也算标签的一部分
-
-```html
-<strong>需要加粗的文字<strong>	<!--双标签-->
-<br>	<!--单标签-->
-<hr>
-```
-
-#### 标签关系
-
-父子关系（嵌套关系）：子级标签换行且缩进（Tab键）
-
-兄弟关系（并列关系）：兄弟标签换行要对齐
-
-```html
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
-</head>
-```
-
-#### 标题标签
-
-一般用在新闻标题、文章标题、网页区域名称、产品名称等等
-
-```html
-<h1>一级标题</h1>
-<h2>二级标题</h2>
-<h3>三级标题</h3>
-<h4>四级标题</h4>
-<h5>五级标题</h5>
-<h6>六级标题</h6>
-```
-
-显示特点：
-
-* 文字加粗
-* 字号逐渐减小
-* 独占一行（换行）
-
-> 经验
->
-> 1. h1 标签在一个网页中只能用一次，用来放新闻标题或网页的 logo
-> 2. h2 ~ h6 没有使用次数的限制
-
-#### 段落标签
-
-一般用在新闻段落、文章段落、产品描述信息等等
-
-```html
-<p>段落</p>
-<p>段落2</p>
-```
-
-显示特点：
-
-* 独占一行
-* 段落之间存在间隙
-
-#### 换行和水平线
-
-* 换行：br
-* 水平线：hr
-
-```html
-<br>
-<hr>
-```
-
-#### 文本格式化标签
-
-|  标签名  |  效果  |
-| :------: | :----: |
-| strong/b |  加粗  |
-|   em/i   |  倾斜  |
-|  ins/u   | 下划线 |
-|  del/s   | 删除线 |
-
-一般用strong、em、ins、del
-
-#### 图像标签
-
-```html
-<img src="url" alt="Pulpit rock" title="xxx" width="304" height="228">
-```
-
-- src
-
-	`src`用于指定图像的位置和名称，是 `<img>`的必须**属性**，url可以是相对路径、绝对路径、在线网址
-
-- alt
-
-	图片无法显示时显示替换文本`alt`，对于图像和图像热点是必须的。它只能用在img、area和input元素中。对于input元素，`alt`属性意在用来替换提交按钮的图片。比如：
-  
-  ```html
-  <input type="image" src="image.gif" alt="Submit" />
-  ```
-  
-- title
-
-	鼠标悬停在图片上显示`title`，`title`可以使用的地方比`alt`多得多，`title`属性可以用在除了base，basefont，head，html，meta，param，script和title之外的所有标签，但是并不是必须的。
-
-- width/height
-
-	如果只写`width`或者`height`，默认是等比例缩放
-
-#### 超链接标签
-
-作用：点击跳转到其他页面。 
-
-```html
-<a href="https://www.baidu.com">跳转到百度</a>
-```
-
-**href 属性值是跳转地址，是超链接的必须属性。**
-
-超链接默认是在当前窗口跳转页面，添加 **target="_blank"** 实现**新窗口**打开页面。
-
-拓展：开发初期，不确定跳转地址，则 href 属性值写为 **#**，表示**空链接**，页面不会跳转，在当前页面刷新一次。
-
-```html
-<a href="https://www.baidu.com/">跳转到百度</a>
-
-<!-- 跳转到本地文件：相对路径查找 --> 
-<!-- target="_blank" 新窗口跳转页面 --> 
-<a href="./01-标签的写法.html" target="_blank">跳转到01-标签的写法</a>
-
-<!-- 开发初期，不知道超链接的跳转地址，href属性值写#，表示空链接，不会跳转 -->
-<a href="#">空链接</a>
-```
-
-a标签可以嵌套其他标签，下面代码实现了点击图片跳转百度
-
-```html
-<a href="https://baidu.com">
-    <img src="img/stone2.jpeg" alt="image1" width="1000" >
-</a>
-```
-
-也可以用其他标签嵌套a标签
-
-```html
-<p>百度的链接：<a href="https://baidu.com">点我去百度</a></p>
-```
-
-#### 音频标签
-
-```html
-<!-- 在 HTML5 里面，如果属性名和属性值完全一样，可以简写为一个单词 -->
-<audio src="./media/music.mp3" controls loop autoplay></audio>
-```
-
-|   属性   |           作用           |
-| :------: | :----------------------: |
-| autoplay | 自动播放，浏览器一般禁用 |
-|   loop   |         循环播放         |
-| controls |       显示控制面板       |
-
-#### 视频标签
-
-```html
-<!-- 在浏览器中，想要自动播放，必须有 muted 属性 -->
-<video src="./media/vue.mp4" controls loop muted autoplay></video>
-```
-
-### 列表
-
-作用：布局内容排列整齐的区域。
-
-列表分类：无序列表、有序列表、定义列表。
-
-#### 无序列表
-
-作用：布局排列整齐的**不需要规定顺序**的区域。
-
-标签：ul 嵌套 li，ul 是无序列表，li 是列表条目。
-
-```html
-<ul>
-  <li>第一项</li>
-  <li>第二项</li>
-  <li>第三项</li>
-  ……
-</ul>
-```
-
-> 注意事项：
->
-> * ul 标签里面只能包裹 li 标签
-> * li 标签里面可以包裹任何内容
-
-#### 有序列表
-
-作用：布局排列整齐的**需要规定顺序**的区域。
-
-标签：ol 嵌套 li，ol 是有序列表，li 是列表条目。
-
-```html
-<ol>
-  <li>第一项</li>
-  <li>第二项</li>
-  <li>第三项</li>
-  ……
-</ol>
-```
-
-> 注意事项：
->
-> * ol 标签里面只能包裹 li 标签
-> * li 标签里面可以包裹任何内容
-
-#### 定义列表
-
-标签：dl 嵌套 dt 和 dd，dl 是定义列表，dt 是定义列表的标题，dd 是定义列表的描述 / 详情。
-
-```html
-<dl>
-  <dt>列表标题</dt>
-  <dd>列表描述 / 详情</dd>
-   ……
-</dl>
-```
-
-> 注意事项：
->
-> * dl 里面只能包含dt 和 dd
-> * dt 和 dd 里面可以包含任何内容
-
-### 表格
-
-#### 基本使用
-
-标签：table 嵌套 tr，tr 嵌套 td / th。 
-
-> 提示：在网页中，**表格默认没有边框线**，使用 **border 属性**可以为表格添加边框线。 
-
-```html
-<table border="1">
-  <tr>
-    <th>姓名</th>
-    <th>语文</th>
-    <th>数学</th>
-    <th>总分</th>
-  </tr>
-  <tr>
-    <td>张三</td>
-    <td>99</td>
-    <td>100</td>
-    <td>199</td>
-  </tr>
-  <tr>
-    <td>李四</td>
-    <td>98</td>
-    <td>100</td>
-    <td>198</td>
-  </tr>
-  <tr>
-    <td>总结</td>
-    <td>全市第一</td>
-    <td>全市第一</td>
-    <td>全市第一</td>
-  </tr>
-</table>
-```
-
-#### 表格结构标签
-
-```html
-<table border="1">
-  <thead>
-    <tr>
-      <th>姓名</th>
-      <th>语文</th>
-      <th>数学</th>
-      <th>总分</th>
-    </tr>
-  </thead> 
-  <tbody>
-    <tr>
-      <td>张三</td>
-      <td>99</td>
-      <td>100</td>
-      <td>199</td>
-    </tr>
-    <tr>
-      <td>李四</td>
-      <td>98</td>
-      <td>100</td>
-      <td>198</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>总结</td>
-      <td>全市第一</td>
-      <td>全市第一</td>
-      <td>全市第一</td>
-    </tr>
-  </tfoot>
-</table>
-```
-
-#### 合并单元格
-
-```html
-<table border="1">
-  <thead>
-    <tr>
-      <th>姓名</th>
-      <th>语文</th>
-      <th>数学</th>
-      <th>总分</th>
-    </tr>
-  </thead> 
-  <tbody>
-
-    <tr>
-      <td>张三</td>
-      <td>99</td>
-      <!--跨行合并-->
-      <td rowspan="2">100</td>
-      <td>199</td>
-    </tr>
-    <tr>
-      <td>李四</td>
-      <td>98</td>
-      <td>198</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>总结</td>
-      <!--跨列合并-->
-      <td colspan="3">全市第一</td>
-    </tr>
-  </tfoot>
-</table>
-```
-
->注意：不能跨表格结构标签合并单元格（thead、tbody、tfoot）
-
-### 表单
-
-作用：收集用户信息。
-
-使用场景：
-
-* 登录页面
-* 注册页面
-* 搜索区域
-
-#### input 标签
-
-input 标签 type 属性值不同，则功能不同。 
-
-```html
-<input type="..." >
-```
-
-| type属性值 |           说明           |
-| :--------: | :----------------------: |
-|    text    | 文本框，用于输入单行文本 |
-|  password  |          密码框          |
-|   radio    |          单选框          |
-|  checkbox  |          多选框          |
-|    file    |         上传文件         |
-
-##### input 标签占位文本 
-
-占位文本：提示信息，文本框和密码框都可以使用。 
-
-```html
-<input type="..." placeholder="提示信息">
-```
-
-##### 单选框
-
-常用属性
-
-| 属性名  | 作用 | 特殊说明                |
-| ------- | -------------- | ----------------------------------- |
-| name    | 控件名称       | 控件分组，同组只能选中一个(单选功能) |
-| checked | 默认选中       | 属性名和属性值相同，简写为一个单词  |
-
-```html
-<input type="radio" name="gender" checked> 男
-<input type="radio" name="gender"> 女
-```
-
-##### 上传文件 
-
-默认情况下，文件上传表单控件只能上传一个文件，添加 multiple 属性可以实现文件多选功能。
-
-```html
-<input type="file" multiple>
-```
-
-##### 多选框
-
-多选框也叫复选框，默认选中：checked。
-
-```html
-<input type="checkbox" checked> 我同意xx条款
-```
-
-#### 下拉菜单
-
-标签：select 嵌套 option，select 是下拉菜单整体，option是下拉菜单的每一项。
-
-```html
-<select>
-  <option>北京</option>
-  <option>上海</option>
-  <option>广州</option>
-  <option>深圳</option>
-  <option selected>武汉</option>
-</select>
-```
-
-> 默认显示第一项，**selected** 属性实现**默认选中**功能。
-
-#### 文本域
-
-作用：多行输入文本的表单控件。 
-
-```html
-<textarea>默认提示文字</textarea>
-```
-
-> 注意点：
->
-> * 实际开发中，使用 CSS 设置 文本域的尺寸
-> * 实际开发中，一般禁用右下角的拖拽功能
-
-#### label 标签 
-
-作用：网页中，某个标签的说明文本。
-
-经验：用 label 标签绑定文字和表单控件的关系，增大表单控件的点击范围。 
-
-* 写法一
-  * label 标签只包裹内容，不包裹表单控件
-  * 设置 label 标签的 for 属性值 和表单控件的 id 属性值相同
-
-```html
-<input type="radio" id="man">
-<label for="man">男</label>
-```
-
-* 写法二：使用 label 标签包裹文字和表单控件，不需要属性 
-
-```html
-<label><input type="radio"> 女</label>
-```
-
-> 提示：支持 label 标签增大点击范围的表单控件：文本框、密码框、上传文件、单选框、多选框、下拉菜单、文本域等等。 
-
-#### 按钮
-
-```html
-<button type="">按钮</button>
-```
-
-| type属性值 |                      说明                       |
-| :--------: | :---------------------------------------------: |
-|   submit   |  提交按钮，点击后可以提交数据到后台(默认功能)   |
-|   reset    |      重置按钮，点击后将表单控件恢复默认值       |
-|   button   | 普通按钮，默认没有功能， 一般配合JavaScript使用 |
-
-```html
-<!-- form 表单区域 -->
-<!-- action="" 发送数据的地址 -->
-<form action="">
-  用户名：<input type="text">
-  <br><br>
-  密码：<input type="password">
-  <br><br>
-
-  <!-- 如果省略 type 属性，功能是 提交 -->
-  <button type="submit">提交</button>
-  <button type="reset">重置</button>
-  <button type="button">普通按钮</button>
-</form>
-```
-
-> 提示：按钮需配合 form 标签（表单区域）才能实现对应的功能。
-
-### 语义化
-
-#### 无语义的布局标签 
-
-作用：布局网页（划分网页区域，摆放内容）
-
-* div：独占一行
-* span：不换行
-
-```html
-<div>div 标签，独占一行</div>
-<span>span 标签，不换行</span>
-```
-
-#### 有语义的布局标签
-
-| 标签名  |    语义    |
-| :-----: | :--------: |
-| header  |  网页头部  |
-|   hav   |  网页导航  |
-| footer  |  网页底部  |
-|  aside  | 网页侧边栏 |
-| section |  网页区块  |
-| article |  网页文章  |
-
-### 字符实体
-
-| 显示结果 | 描述   | 实体名称 |
-| -------- | ------ | -------- |
-|          | 空格   | \&nbsp;  |
-| <        | 小于号 | \&lt;    |
-| >        | 大于号 | \&gt;    |
-
-## CSS
+# CSS
 
 层叠样式表 (Cascading Style Sheets，缩写为 CSS），是一种 **样式表** 语言，用来**描述 HTML 文档的呈现**（**美化内容**）。
 
@@ -572,7 +19,7 @@ input 标签 type 属性值不同，则功能不同。
 
 > 提示：属性名和属性值成对出现 → 键值对。 
 
-### CSS引入方式
+## CSS引入方式
 
 * **内部**样式表：学习使用
   * CSS 代码写在 style 标签里面
@@ -591,11 +38,11 @@ input 标签 type 属性值不同，则功能不同。
 <div style="color: red; font-size:20px;">这是 div 标签</div>
 ```
 
-### 选择器
+## 选择器
 
 作用：**查找标签**，设置样式。 
 
-#### 标签选择器
+### 标签选择器
 
 标签选择器：使用**标签名**作为选择器 → 选中**同名标签设置相同的样式**。
 
@@ -611,7 +58,7 @@ input 标签 type 属性值不同，则功能不同。
 
 > 注意：标签选择器**无法差异化**同名标签的显示效果。
 
-#### 类选择器
+### 类选择器
 
 作用：查找标签，**差异化**设置标签的显示效果。
 
@@ -641,7 +88,7 @@ input 标签 type 属性值不同，则功能不同。
 
 > 开发习惯：类名见名知意，多个单词可以用 - 连接，例如：news-hd。
 
-#### id选择器
+### id选择器
 
 作用：查找标签，差异化设置标签的显示效果。
 
@@ -666,7 +113,7 @@ input 标签 type 属性值不同，则功能不同。
 
 > 规则：同一个ID选择器在CSS样式设置时，可以被多次使用，但在实际开发中，用到javaScript技术时，就不能在页面中多次使用同一个id。
 
-#### 通配符选择器
+### 通配符选择器
 
 作用：查找页面**所有**标签，设置相同样式。
 
@@ -680,7 +127,7 @@ input 标签 type 属性值不同，则功能不同。
 
 > 经验：通配符选择器可以用于**清除标签的默认样式**，例如：标签默认的外边距、内边距。
 
-#### 结构伪类选择器 
+### 结构伪类选择器 
 
 作用：根据元素的**结构关系**查找元素。
 
@@ -708,7 +155,7 @@ li:first-child {
 
 > 提示：公式中的n取值从 **0** 开始。 
 
-#### 伪元素选择器 
+### 伪元素选择器 
 
 作用：创建**虚拟元素**（伪元素），用来**摆放装饰性的内容**。 
 
@@ -732,209 +179,13 @@ div::after {
 * 伪元素默认是**行内**显示模式
 * **权重和标签选择器相同**
 
-#### 优先级
-
-如下代码的结果是？
-
-```html
-<style>
-  p{
-    color: red;
-    font-size: xx-large;
-  }
-  #q{
-    color: green;
-  }
-  .t1{
-    color: blue;
-    text-align: center;
-  }
-  *{
-    color: orange;
-  }
-</style>
-
-<p>dsfsfsfads</p>
-<p class="t1">dsfsfsfads</p>
-<p class="t1" id="q">dsfsfsfads</p>
-<p id="q">sss</p>
-<h2>11</h2>
-```
-
-> ID选择器>类选择器>标签选择器>通配符选择器
-
-### 文字控制属性
-
-#### 字体大小
-
-* 属性名：**font-size**
-* 属性值：文字尺寸，PC 端网页最常用的单位 **px**
-
-```css
-p {
-  font-size: 30px;
-}
-```
-
-> 经验：谷歌浏览器默认字号是16px。
-
-#### 字体样式（是否倾斜） 
-
-作用：清除文字默认的倾斜效果
-
-属性名：**font-style**
-
-属性值
-
-* 正常（不倾斜）：**normal** 
-* 倾斜：**italic**
-
-#### 字体加粗
-
-```css
-.div1{
-  font-weight:400;	 /*400=normal*/
-}
-.div2{
-  font-weight:700;	/*700=bold*/
-}
-```
-
-#### 行高
-
-作用：设置多行文本的间距
-
-属性名：line-height
-
-属性值
-
-* 数字 + px
-* 数字（当前标签font-size属性值的倍数）
-
-```css
-line-height: 30px;
-
-
-/* 当前标签字体大小为16px */
-line-height: 2;
-```
-
-> 行高的测量方法：从一行文字的最顶端（最底端）量到下一行文字的最顶端（最底端）。 
-
-#### 单行文字垂直居中
-
-垂直居中技巧：**行高属性值等于盒子高度属性值**
-
-注意：该技巧适用于单行文字垂直居中效果
-
-```css
-div {
-  height: 100px;
-  background-color: skyblue;
-
-  /* 注意：只能是单行文字垂直居中 */
-  line-height: 100px;
-}
-```
-
-#### 字体族
-
-属性名：**font-family**
-
-属性值：字体名
-
-```css
-font-family: 楷体;
-```
-
-> 拓展（了解）：font-family属性值可以书写多个字体名，各个字体名用逗号隔开，执行顺序是从左向右依次查找
->
-> *  font-family 属性最后设置一个字体族名，网页开发建议使用无衬线字体
-
-```css
-font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
-```
-
-#### font复合属性
-
-复合属性：属性的简写方式，**一个属性对应多个值的写法**，各个属性值之间用**空格**隔开。
-
-**font: 是否倾斜  是否加粗  字号/行高 字体（必须按顺序书写）**
-
-```css
-div {
-  font: italic 700 30px/2 楷体;
-}
-```
-
-> 注意：字号和字体值必须书写，否则 font 属性不生效 
-
-#### 文本缩进 
-
-属性名：**text-indent**
-
-属性值：
-
-* 数字 + px
-* **数字 + em**（推荐：**1em = 当前标签的字号大小**）
-
-```css
-p {
-  text-indent: 2em;
-}
-```
-
-#### 文本对齐方式 
-
-作用：控制内容水平对齐方式
-
-属性名：**text-align**
-
-```css
-text-align : center;	/*left、center、right*/
-```
-
-> text-align本质是控制内容的对齐方式，属性要设置给内容的父级。 
-
-```html
-<style>
-  div {
-    text-align: center;
-  }
-</style>
-<div>
-  <!--控制图片对齐-->
-  <img src="../0/img/stone2.jpeg" width="1000px">
-</div>
-```
-
-#### 文本修饰线 
-
-属性名： **text-decoration** 
-
-|    属性值    |  效果  |
-| :----------: | :----: |
-|     none     |   无   |
-|  underline   | 下划线 |
-| line-through | 删除线 |
-|   overline   | 上划线 |
-
-#### 文字颜色
-
-|  颜色表示方式  |    属性值     |                说明                |        使用场景        |
-| :------------: | :-----------: | :--------------------------------: | :--------------------: |
-|   颜色关键字   | 颜色英文单词  |         red、green、blue…          |        学习测试        |
-|   rgb表示法    |   rgb(r,g,b   | r,g,b表示红绿蓝三原色，取值：0-255 |          了解          |
-|   rgba表示法   | rgba(r,g,b,a) |     a表示透明度，  取 值 ：0-1     |  开发使用，实现透明色  |
-| 十六进制表示法 |    #RRGGBB    |  #000000,#ffcc00,简写：#000,#fcO   | 开发使用(从设计稿复制) |
-
-### 复合选择器
+## 复合选择器
 
 定义：由两个或多个基础选择器，通过不同的方式组合而成。
 
 作用：更准确、更高效的选择目标元素（标签）。
 
-#### 后代选择器
+### 后代选择器
 
 后代选择器：**选中某元素的后代元素**。
 
@@ -957,7 +208,7 @@ text-align : center;	/*left、center、right*/
 </div>
 ```
 
-#### 子代选择器
+### 子代选择器
 
 子代选择器：选中某元素的子代元素（**最近的子级**）。
 
@@ -979,7 +230,7 @@ text-align : center;	/*left、center、right*/
 
 ```
 
-#### 并集选择器
+### 并集选择器
 
 并集选择器：选中**多组标签**设置**相同**的样式。
 
@@ -999,7 +250,7 @@ text-align : center;	/*left、center、right*/
 <span>span 标签</span>
 ```
 
-#### 交集选择器 
+### 交集选择器 
 
 交集选择器：选中**同时满足多个条件**的元素。
 
@@ -1019,7 +270,7 @@ text-align : center;	/*left、center、right*/
 
 > 注意：如果交集选择器中有标签选择器，标签选择器必须书写在最前面。 
 
-#### 伪类选择器 
+### 伪类选择器 
 
 伪类选择器：伪类表示元素**状态**，选中元素的某个状态设置样式。
 
@@ -1050,7 +301,172 @@ text-align : center;	/*left、center、right*/
 >
 > 经验：工作中，一个 a 标签选择器设置超链接的样式， hover状态特殊设置 
 
-### CSS特性
+## 文字控制属性
+
+### 字体大小
+
+* 属性名：**font-size**
+* 属性值：文字尺寸，PC 端网页最常用的单位 **px**
+
+```css
+p {
+  font-size: 30px;
+}
+```
+
+> 经验：谷歌浏览器默认字号是16px。
+
+### 字体样式（是否倾斜） 
+
+作用：清除文字默认的倾斜效果
+
+属性名：**font-style**
+
+属性值
+
+* 正常（不倾斜）：**normal** 
+* 倾斜：**italic**
+
+### 字体加粗
+
+```css
+.div1{
+  font-weight:400;	 /*400=normal*/
+}
+.div2{
+  font-weight:700;	/*700=bold*/
+}
+```
+
+### 行高
+
+作用：设置多行文本的间距
+
+属性名：line-height
+
+属性值
+
+* 数字 + px
+* 数字（当前标签font-size属性值的倍数）
+
+```css
+line-height: 30px;
+
+
+/* 当前标签字体大小为16px */
+line-height: 2;
+```
+
+> 行高的测量方法：从一行文字的最顶端（最底端）量到下一行文字的最顶端（最底端）。 
+
+### 单行文字垂直居中
+
+垂直居中技巧：**行高属性值等于盒子高度属性值**
+
+注意：该技巧适用于单行文字垂直居中效果
+
+```css
+div {
+  height: 100px;
+  background-color: skyblue;
+
+  /* 注意：只能是单行文字垂直居中 */
+  line-height: 100px;
+}
+```
+
+### 字体族
+
+属性名：**font-family**
+
+属性值：字体名
+
+```css
+font-family: 楷体;
+```
+
+> 拓展（了解）：font-family属性值可以书写多个字体名，各个字体名用逗号隔开，执行顺序是从左向右依次查找
+>
+> *  font-family 属性最后设置一个字体族名，网页开发建议使用无衬线字体
+
+```css
+font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+```
+
+### font复合属性
+
+复合属性：属性的简写方式，**一个属性对应多个值的写法**，各个属性值之间用**空格**隔开。
+
+**font: 是否倾斜  是否加粗  字号/行高 字体（必须按顺序书写）**
+
+```css
+div {
+  font: italic 700 30px/2 楷体;
+}
+```
+
+> 注意：字号和字体值必须书写，否则 font 属性不生效 
+
+### 文本缩进 
+
+属性名：**text-indent**
+
+属性值：
+
+* 数字 + px
+* **数字 + em**（推荐：**1em = 当前标签的字号大小**）
+
+```css
+p {
+  text-indent: 2em;
+}
+```
+
+### 文本对齐方式 
+
+作用：控制内容水平对齐方式
+
+属性名：**text-align**
+
+```css
+text-align : center;	/*left、center、right*/
+```
+
+> text-align本质是控制内容的对齐方式，属性要设置给内容的父级。 
+
+```html
+<style>
+  div {
+    text-align: center;
+  }
+</style>
+<div>
+  <!--控制图片对齐-->
+  <img src="../0/img/stone2.jpeg" width="1000px">
+</div>
+```
+
+### 文本修饰线 
+
+属性名： **text-decoration** 
+
+|    属性值    |  效果  |
+| :----------: | :----: |
+|     none     |   无   |
+|  underline   | 下划线 |
+| line-through | 删除线 |
+|   overline   | 上划线 |
+
+### 文字颜色
+
+|  颜色表示方式  |    属性值     |                说明                |        使用场景        |
+| :------------: | :-----------: | :--------------------------------: | :--------------------: |
+|   颜色关键字   | 颜色英文单词  |         red、green、blue…          |        学习测试        |
+|   rgb表示法    |  rgb(r,g,b)   | r,g,b表示红绿蓝三原色，取值：0-255 |          了解          |
+|   rgba表示法   | rgba(r,g,b,a) |     a表示透明度，  取 值 ：0-1     |  开发使用，实现透明色  |
+| 十六进制表示法 |    #RRGGBB    |  #000000,#ffcc00,简写：#000,#fcO   | 开发使用(从设计稿复制) |
+
+## CSS特性
 
 CSS特性：化简代码 / 定位问题，并解决问题
 
@@ -1058,13 +474,13 @@ CSS特性：化简代码 / 定位问题，并解决问题
 * 层叠性
 * 优先级
 
-#### 继承性
+### 继承性
 
 继承性：子级默认继承父级的**文字控制属性**。 
 
 > 注意：如果标签有默认文字样式会继承失败。 例如：a 标签的颜色、h1、h2、h3、h4、h5、h6的字体大小。
 
-#### 层叠性
+### 层叠性
 
 特点：
 
@@ -1088,7 +504,7 @@ CSS特性：化简代码 / 定位问题，并解决问题
 
 > 注意：选择器类型相同则遵循层叠性，否则按选择器优先级判断。 
 
-#### 优先级
+### 优先级
 
 优先级：也叫权重，当一个标签**使用了多种选择器时**，基于不同种类的选择器的**匹配规则**。
 
@@ -1105,7 +521,7 @@ CSS特性：化简代码 / 定位问题，并解决问题
 <div class="box">div 标签</div>
 ```
 
-##### 基础选择器
+#### 基础选择器
 
 规则：选择器**优先级高的样式生效**。
 
@@ -1113,7 +529,7 @@ CSS特性：化简代码 / 定位问题，并解决问题
 
 ​           **（选中标签的范围越大，优先级越低）**
 
-##### 复合选择器-叠加
+#### 复合选择器-叠加
 
 叠加计算：如果是复合选择器，则需要**权重叠加**计算。
 
@@ -1127,7 +543,7 @@ CSS特性：化简代码 / 定位问题，并解决问题
 * **!important 权重最高**
 * 继承权重最低
 
-### Emmet 写法
+## Emmet 写法
 
 Emmet写法：代码的**简写**方式，输入缩写 VS Code 会自动生成对应的代码。 
 
@@ -1151,9 +567,9 @@ Emmet写法：代码的**简写**方式，输入缩写 VS Code 会自动生成�
 |  背景色   |                `background-color`                 |      bgc      |
 | 多个属性  | `width:200px;height:100px;background-color:#fff;` | W200+h100+bgc |
 
-### 背景属性
+## 背景属性
 
-#### 背景图
+### 背景图
 
 网页中，使用背景图实现装饰性的图片效果。
 
@@ -1171,7 +587,7 @@ div {
 
 > 提示：背景图默认有**平铺（复制）效果**。 
 
-#### 平铺方式
+### 平铺方式
 
 属性名：**background-repeat**（bgr） 
 
@@ -1193,7 +609,7 @@ div {
 }
 ```
 
-#### 背景图位置
+### 背景图位置
 
 属性名：**background-position**（bgp）
 
@@ -1203,7 +619,7 @@ div {
 
 | 关键字 | 位置 |
 | :----: | :--: |
-|  eft   | 左侧 |
+|  left  | 左侧 |
 | right  | 右侧 |
 | center | 居中 |
 |  top   | 顶部 |
@@ -1235,7 +651,7 @@ div {
 > * 关键字取值方式写法，可以颠倒取值顺序
 > * 可以只写一个关键字，另一个方向默认为居中；数字只写一个值表示水平方向，垂直方向为居中
 
-#### 背景图缩放
+### 背景图缩放
 
 作用：设置背景图大小
 
@@ -1265,7 +681,7 @@ div {
 
 > 提示：工作中，**图片比例与盒子比例相同**，使用 cover 或 contain 缩放背景图效果相同。
 
-#### 背景图固定
+### 背景图固定
 
 作用：背景不会随着元素的内容滚动。
 
@@ -1281,7 +697,7 @@ body {
 }
 ```
 
-#### 背景复合属性
+### 背景复合属性
 
 属性名：**background**（bg）
 
@@ -1296,13 +712,13 @@ div {
 }
 ```
 
-### 显示模式
+## 显示模式
 
 显示模式：标签（元素）的显示方式。 
 
 作用：布局网页的时候，根据标签的显示模式选择合适的标签摆放内容。 
 
-#### 块级元素
+### 块级元素
 
 特点：
 
@@ -1313,7 +729,7 @@ div {
 <div style="background-color:orange;width:100px;height:100px;">div1</div>
 <div style="background-color:green;width:100px;height:100px;">div2</div>
 
-#### 行内元素
+### 行内元素
 
 特点：
 
@@ -1323,7 +739,7 @@ div {
 
 <span style="background-color:orange;width:100px;height:100px">span1</span><span style="background-color:green;width:100px;height:100px">span2</span>
 
-#### 行内块元素 
+### 行内块元素 
 
 特点：
 
@@ -1331,7 +747,7 @@ div {
 * 设置宽高属性生效
 * 宽高尺寸也可以由内容撑开
 
-#### 转换显示模式
+### 转换显示模式
 
 属性：**display**
 
@@ -1350,11 +766,11 @@ block:
 
 <span style="background-color:orange;width:100px;height:100px;display:block;">span1</span><span style="background-color:green;width:100px;height:100px;display:block;">span2</span> 
 
-### 盒子模型
+## 盒子模型
 
 作用：布局网页，摆放盒子和内容。
 
-#### 组成
+### 组成
 
 * 内容区域 – width & height
 * 内边距 – padding（出现在内容与盒子边缘之间）
@@ -1387,9 +803,9 @@ div {
   height: 200px;
   background-color: yellow;">我是div2</div>
 
-#### 边框线
+### 边框线
 
-##### 四个方向
+#### 四个方向
 
 属性名：**border**（bd）
 
@@ -1410,7 +826,7 @@ div {
 }
 ```
 
-##### 单方向边框线 
+#### 单方向边框线 
 
 属性名：**border-方位名词**（bd+方位名词首字母，例如，bdl）
 
@@ -1428,7 +844,7 @@ div {
 }
 ```
 
-#### 内边距 
+### 内边距 
 
 作用：设置 内容 与 盒子边缘 之间的距离。
 
@@ -1462,7 +878,7 @@ div {
 
 > 技巧：从**上**开始**顺时针**赋值，当前方向没有数值则与**对面取值相同**。 
 
-#### 尺寸计算
+### 尺寸计算
 
 默认情况：盒子尺寸 = 内容尺寸 + border 尺寸 + 内边距尺寸
 
@@ -1473,7 +889,7 @@ div {
 * 手动做减法，减掉 border / padding 的尺寸
 * 內减模式：**box-sizing: border-box**
 
-#### 外边距
+### 外边距
 
 作用：拉开两个盒子之间的距离
 
@@ -1483,7 +899,7 @@ div {
 
 margin-left/margin-right/margin-top/margin-bottom
 
-#### 版心居中
+### 版心居中
 
 左右 margin 值 为 auto（盒子要有宽度）
 
@@ -1503,7 +919,7 @@ div {
         background-color: pink;
       ">div</div>
 
-#### 清除默认样式 
+### 清除默认样式 
 
 ```css
 /* 清除默认内外边距 */
@@ -1518,7 +934,7 @@ li {
 }
 ```
 
-#### 元素溢出
+### 元素溢出
 
 作用：控制溢出元素的内容的显示方式。
 
@@ -1662,9 +1078,9 @@ scroll:
         在天愿作比翼鸟，在地愿为连理枝。
         天长地久有时尽，此恨绵绵无绝期。</div>
 
-#### 外边距问题
+### 外边距问题
 
-##### 合并现象
+#### 合并现象
 
 场景：**垂直**排列的兄弟元素，上下 **margin** 会**合并**
 
@@ -1679,7 +1095,7 @@ scroll:
 }
 ```
 
-##### 外边距塌陷
+#### 外边距塌陷
 
 场景：父子级的标签，子级的添加 **上外边距** 会产生**塌陷**问题
 
@@ -1711,7 +1127,7 @@ scroll:
 
 > 如果父级有内容，就不会有这个问题
 
-#### 行内元素 – 内外边距问题 
+### 行内元素 – 内外边距问题 
 
 场景：行内元素添加 margin 和 padding，无法改变元素垂直位置
 
@@ -1727,7 +1143,7 @@ span {
 }
 ```
 
-#### 圆角
+### 圆角
 
 作用：设置元素的外边框为圆角。
 
@@ -1779,7 +1195,7 @@ div {
   border-radius: 40px;">
 </div>
 
-#### 盒子阴影（拓展）
+### 盒子阴影（拓展）
 
 作用：给元素设置阴影效果
 
@@ -1807,5 +1223,345 @@ div {
   border-radius:40px;
   box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);">
 </div>
+## Flex布局
 
- 
+> 目标：熟练使用 Flex 完成结构化布局
+
+### 标准流
+
+标准流也叫文档流，指的是标签在页面中**默认的排布规则**，例如：块元素独占一行，行内元素可以一行显示多个。 
+
+### 浮动
+
+#### 基本使用
+
+作用：让块元素水平排列。
+
+属性名：**float**
+
+属性值
+
+* **left**：左对齐
+* **right**：右对齐
+
+```html
+<style>
+  /* 特点：顶对齐；具备行内块显示模式特点；浮动的盒子会脱标 */
+  .one {
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+
+    float: left;
+  }
+
+  .two {
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+
+    /* float: left; */
+
+    float: right;
+  }
+</style>
+
+<div class="one">one</div>
+<div class="two">two</div>
+```
+
+特点：
+
+* 浮动后的盒子**顶对齐**
+* 浮动后的盒子具备**行内块**特点
+* 浮动后的盒子**脱标**（脱离标准流），**不占用标准流的位置**
+
+
+#### 产品区域布局
+
+##### HTML标签
+
+```html
+<!-- 版心：左右，右面：8个产品 → 8个 li -->
+<div class="product">
+  <div class="left"></div>
+  <div class="right">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
+```
+
+##### CSS样式
+
+```html
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .product {
+    margin: 50px auto;
+    width: 1226px;
+    height: 628px;
+    background-color: pink;
+  }
+
+  .left {
+    float: left;
+    width: 234px;
+    height: 628px;
+    background-color: skyblue;
+  }
+
+  .right {
+    float: right;
+    width: 978px;
+    height: 628px;
+    background-color: brown;
+  }
+
+  .right li {
+    float: left;
+    margin-right: 14px;
+    margin-bottom: 14px;
+    width: 234px;
+    height: 300px;
+    background-color: orange;
+  }
+
+  /* 第四个li和第八个li 去掉右侧的margin */
+  .right li:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  /* 细节：如果父级宽度不够，浮动的盒子会掉下来 */
+</style>
+```
+
+#### 清除浮动
+
+场景：浮动元素会脱标，如果**父级没有高度**，**子级无法撑开父级高度**（可能导致页面布局错乱）
+
+解决方法：**清除浮动**（清除浮动带来的影响）
+
+##### 场景搭建
+
+```html
+<style>
+  .top {
+    margin: 10px auto;
+    width: 1200px;
+    /* height: 300px; */
+    background-color: pink;
+  }
+
+  .left {
+    float: left;
+    width: 200px;
+    height: 300px;
+    background-color: skyblue;
+  }
+
+  .right {
+    float: right;
+    width: 950px;
+    height: 300px;
+    background-color: orange;
+  }
+
+  .bottom {
+    height: 100px;
+    background-color: brown;
+  }
+
+</style>
+
+<div class="top">
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+<div class="bottom"></div>
+```
+
+##### 额外标签法
+
+在**父元素内容的最后**添加一个**块级**元素，设置 CSS 属性 **clear: both** 
+
+```html
+<style>
+.clearfix {
+  clear: both;
+}
+</style>
+
+<div class="father">
+  <div class="left"></div>
+  <div class="right"></div>
+  <div class="clearfix"></div>
+</div>
+```
+
+##### 单伪元素法
+
+1. 准备 after 伪元素
+
+```css
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+```
+
+2. 父级使用 clearfix 类
+
+```html
+<div class="father clearfix"></div>
+```
+
+**单伪元素法的原理和额外标签法的原理一样**
+
+##### 双伪元素法
+
+1. 准备 after 和 before 伪元素
+
+```css
+/* before 解决外边距塌陷问题 */
+/* 双伪元素法 */
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+/* after 清除浮动 */
+.clearfix::after {
+  clear: both;
+}
+```
+
+2. 父级使用 clearfix 类
+
+```html
+<div class="father clearfix"></div>
+```
+
+##### overflow法
+
+```css
+.father {
+  margin: 10px auto;
+  width: 1200px;
+  /* height: 300px; */
+  background-color: pink;
+
+  overflow: hidden;	/*会让浏览器检查父级范围*/
+}
+```
+
+### Flex布局
+
+Flex 布局也叫**弹性布局**，是浏览器**提倡的布局模型**，非常适合**结构化**布局，提供了强大的空间分布和对齐能力。
+
+Flex 模型不会产生浮动布局中脱标现象，布局网页更简单、更灵活。
+
+#### Flex组成
+
+设置方式：给**父**元素设置 **display: flex**，子元素可以自动挤压或拉伸
+
+组成部分：
+
+* 弹性容器
+* 弹性盒子：沿着主轴排列
+* 主轴：默认在**水平**方向
+* 侧轴 / 交叉轴：默认在**垂直**方向
+
+![image-20240525092923099](https://cdn.jsdelivr.net/gh/HiderX/pictures@main/uPic/image-20240525092923099.png)
+
+#### 主轴对齐方式
+
+属性名：**justify-content**
+
+| 属性值        | 效果                                               |
+| ------------- | -------------------------------------------------- |
+| flex-start    | 默认值，弹性盒子从起点开始依次排列                 |
+| flex-end      | 弹性盒子从终点开始依次排列                         |
+| center        | 弹性盒子沿主轴居中排列                             |
+| space-between | 弹性盒子沿主轴均匀排列，空白间距均分在弹性盒子之间 |
+| space-around  | 弹性盒子沿主轴均匀排列，空白间距均分在弹性盒子两侧 |
+| space-evenly  | 弹性盒子沿主轴均匀排列，弹性盒子与容器之间间距相等 |
+
+##### 侧轴对齐方式
+
+* align-items：当前弹性容器内**所有**弹性盒子的侧轴对齐方式（给**弹性容器**设置）
+* align-self：单独控制**某个弹性盒子**的侧轴对齐方式（给**弹性盒子**设置）
+
+| 属性值     | 效果                                                         |
+| ---------- | ------------------------------------------------------------ |
+| stretch    | 弹性盒子沿着侧轴线被拉伸至铺满容器(弹性盒子没有设置侧轴方向尺寸则默认拉伸) |
+| center     | 弹性盒子沿侧轴居中排列                                       |
+| flex-start | 弹性盒子从起点开始依次排列                                   |
+| flex-end   | 弹性盒子从终点开始依次排列                                   |
+
+#### 修改主轴方向
+
+**主轴默认在水平方向，侧轴默认在垂直方向**
+
+属性名：**flex-direction**
+
+| 属性值         | 效果                     |
+| -------------- | ------------------------ |
+| row            | 水平方向，从左向右(默认) |
+| column         | 垂直方向，从上向下       |
+| row-reverse    | 水平方向，从右向左       |
+| column-reverse | 垂直方向，从下向上       |
+
+#### 弹性伸缩比
+
+作用：控制弹性盒子的主轴方向的尺寸。
+
+属性名：**flex**
+
+属性值：整数数字，表示占用**父级剩余尺寸的份数**。
+
+#### 弹性盒子换行
+
+弹性盒子可以自动挤压或拉伸，默认情况下，所有弹性盒子都在一行显示。
+
+属性名：**flex-wrap**
+
+属性值
+
+* wrap：换行
+* nowrap：不换行（默认）
+
+#### 行内对齐方式
+
+属性名：**align-content** 
+
+行与行之间
+
+| 属性值        | 效果                                               |
+| ------------- | -------------------------------------------------- |
+| flex-start    | 默认值，弹性盒子从起点开始依次排列                 |
+| flex-end      | 弹性盒子从终点开始依次排列                         |
+| center        | 弹性盒子沿主轴居中排列                             |
+| space-between | 弹性盒子沿主轴均匀排列，空白间距均分在弹性盒子之间 |
+| space-around  | 弹性盒子沿主轴均匀排列，空白间距均分在弹性盒子两侧 |
+| space-evenly  | 弹性盒子沿主轴均匀排列，弹性盒子与容器之间间距相等 |
+
+> 注意：该属性对**单行**弹性盒子模型**无效**。 
