@@ -87,7 +87,23 @@
       color:'rgb(90,90,90)',
       language:'chinese',
       isExpected: true
-    }
+    },
+    plugins: [
+      function(hook) {
+        var footer = [
+          '<hr/>',
+          '<footer>',
+          '<div style="text-align: center; color: #666; font-size: 14px;">',
+          '本网站由 <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" style="text-decoration: none;"><img src="static/upyun_logos/又拍云_logo5.png" alt="又拍云" style="height: 24px; vertical-align: middle; margin: 0 4px;"></a> 提供CDN加速/云存储服务',
+          '</div>',
+          '</footer>'
+        ].join('');
+
+        hook.afterEach(function(html) {
+          return html + footer;
+        });
+      }
+    ]
   }
   </script>
   <!-- MathJax -->
@@ -133,5 +149,4 @@
   <!--字数统计-->
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
 </body>
-    <footer>https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral</footer>
 </html>
